@@ -4,12 +4,12 @@
 * @Email:  rafaelbripi@gmail.com
 * @Project: myIdentity
 * @Last modified by:   Rafael Bribiesca
-* @Last modified time: 2016-08-22T22:10:22-05:00
+* @Last modified time: 2016-08-23T19:32:06-05:00
 */
 
 
 
-import react,{Component} from 'react';
+import React,{Component} from 'react';
 import UserSignUp from './index';
 
 class UserSignUpContainer extends Component{
@@ -18,7 +18,8 @@ class UserSignUpContainer extends Component{
 
   }
 
-  async submitForm(){
+  async submitForm(event){
+    event.preventDefault();
     console.log("sending form");
   }
 

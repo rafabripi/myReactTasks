@@ -4,7 +4,7 @@
 * @Email:  rafaelbripi@gmail.com
 * @Project: myIdentity
 * @Last modified by:   Rafael Bribiesca
-* @Last modified time: 2016-08-22T22:57:08-05:00
+* @Last modified time: 2016-08-23T21:33:47-05:00
 */
 
 
@@ -14,7 +14,7 @@ import React from 'react';
 import UserName from './UserName';
 import ValidatorBase from "../Validator";
 
-//const UserNameVal = ValidatorBase(UserName);
+const UserNameVal = ValidatorBase(UserName);
 
 const UserSignUp = (props) => {
   return(
@@ -27,7 +27,7 @@ const UserSignUp = (props) => {
 
       <form onSubmit={props.submit}>
 
-          <UserName />
+        <UserName />
 
         <Row>
           <Col xs={12} md={2}><ControlLabel>Name : </ControlLabel></Col>
@@ -83,3 +83,4 @@ const UserSignUp = (props) => {
 }
 
 export default UserSignUp;
+module.exports.UserSignUp = UserName;

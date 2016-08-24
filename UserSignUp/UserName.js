@@ -4,7 +4,7 @@
 * @Email:  rafaelbripi@gmail.com
 * @Project: myIdentity
 * @Last modified by:   Rafael Bribiesca
-* @Last modified time: 2016-08-22T22:52:36-05:00
+* @Last modified time: 2016-08-23T20:13:00-05:00
 */
 
 
@@ -17,7 +17,7 @@ const UserName = (props) => {
     <FieldGroup
       id="userName"
       type="text"
-      label="Display your name"
+      label="Name :"
       placeholder="Enter your name here"
       {...props}
     />
