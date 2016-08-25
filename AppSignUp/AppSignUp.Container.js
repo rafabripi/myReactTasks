@@ -4,7 +4,7 @@
 * @Email:  rafaelbripi@gmail.com
 * @Project: myIdentity
 * @Last modified by:   Rafael Bribiesca
-* @Last modified time: 2016-08-22T22:28:43-05:00
+* @Last modified time: 2016-08-24T22:50:23-05:00
 */
 
 
@@ -12,7 +12,7 @@
 import React,{Component} from "react";
 import HttpFactory from "../../httpCalls/myIdentity.httpCalls";
 import $consts from "../../common/myIdentity.constants";
-import AppSignUp from "../UserSignUp/index";
+import AppSignUp from "./index";
 import $validate from "validate.js";
 import constraints from "../../constraints/appSignUp.constraints";
 import nestedProperty from "nested-property";

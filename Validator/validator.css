@@ -1,0 +1,14 @@
+.errorlbl{
+	color: red;
+}
+
+.noErrorlbl{
+	color: black;
+}
+
+.showErr{
+	visibility:visible;
+}
+.noErr{
+	visibility:hidden;
+}

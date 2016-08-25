@@ -4,7 +4,7 @@
 * @Email:  rafaelbripi@gmail.com
 * @Project: myIdentity
 * @Last modified by:   Rafael Bribiesca
-* @Last modified time: 2016-08-23T21:33:47-05:00
+* @Last modified time: 2016-08-24T19:16:15-05:00
 */
 
 
@@ -27,7 +27,7 @@ const UserSignUp = (props) => {
 
       <form onSubmit={props.submit}>
 
-        <UserName />
+        <UserNameVal  errors={props.errorsFound} onChange={props.handleModel}/>
 
         <Row>
           <Col xs={12} md={2}><ControlLabel>Name : </ControlLabel></Col>
