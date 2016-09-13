@@ -4,7 +4,7 @@
 * @Email:  rafaelbripi@gmail.com
 * @Project: myIdentity
 * @Last modified by:   Rafael Bribiesca
-* @Last modified time: 2016-08-23T21:32:41-05:00
+* @Last modified time: 2016-09-12T21:57:13-05:00
 */
 
 
@@ -14,7 +14,6 @@ import {FormGroup,ControlLabel,FormControl,HelpBlock} from "react-bootstrap";
 
 const FieldGroup = ({ id, label, help, ...props }) => {
   return (
-
     <FormGroup controlId={id}>
       <ControlLabel>{label}</ControlLabel>
       <FormControl {...props} />

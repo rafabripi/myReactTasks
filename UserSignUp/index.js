@@ -4,7 +4,7 @@
 * @Email:  rafaelbripi@gmail.com
 * @Project: myIdentity
 * @Last modified by:   Rafael Bribiesca
-* @Last modified time: 2016-09-12T19:36:03-05:00
+* @Last modified time: 2016-09-12T22:51:15-05:00
 */
 
 import {Button, Glyphicon, PageHeader, Grid, Navbar} from 'react-bootstrap';
@@ -42,20 +42,24 @@ const BillingCityVal = ValidatorBase(BillingCity);
 
 const UserSignUp = (props) => {
   return(
-    <div className= "col-md-offset-2">
+
       <Grid>
 
         <div className="row">
+          <div className="col-md-2"></div>
           <div className="col-md-8"><PageHeader>Join Us</PageHeader></div>
+          <div className="col-md-2"></div>
         </div>
 
         <form onSubmit={props.submit}>
           <nav className="navbar navbar-inverse navbar-fixed-top">
-            <div className="col-sm-offset-2">
+
+              <div className="col-md-2"></div>
               <div className="btn-group col-xs-12 col-md-8" role="group" aria-label="...">
                 <button type="submit" className="btn btn-md btn-primary glyphicon glyphicon-floppy-save navbar-btn"> Save</button>
               </div>
-            </div>
+              <div className="col-md-2"></div>
+
           </nav>
 
           <EmailVal errors={props.errorsFound} onChange={props.handleModel}/>
@@ -65,9 +69,11 @@ const UserSignUp = (props) => {
           <AddressVal errors={props.errorsFound} onChange={props.handleModel}/>
 
           <div className="row">
+            <div className="col-md-2"></div>
             <div className= "col-xs-12s col-md-8">
               <Button block id="btnShowHideBilling" type="button" onClick={props.showHideFields} className={props.popHide} > Billing information </Button>
             </div>
+            <div className="col-md-2"></div>
           </div>
 
           <div id="hideBillingInfo" className={props.PropShow}>
@@ -83,7 +89,7 @@ const UserSignUp = (props) => {
 
         </form>
       </Grid>
-    </div>
+
   )
 }
 

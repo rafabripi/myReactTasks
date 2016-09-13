@@ -4,7 +4,7 @@
 * @Email:  rafaelbripi@gmail.com
 * @Project: myIdentity
 * @Last modified by:   Rafael Bribiesca
-* @Last modified time: 2016-08-23T21:20:40-05:00
+* @Last modified time: 2016-09-12T22:46:59-05:00
 */
 
 
@@ -42,10 +42,11 @@ const ValidatorBase = (Cmp) => class extends Component{
 	render(){
 		return (
 			<Row>
-			      <Col xs={12} md={8}>
-			      	<Cmp onChange={this.props.onChange} />
+						<Col xs={6} md={2}></Col>
+			      <Col xs={12} md={8} >
+			      	<Cmp onChange={this.props.onChange}/>
 			      </Col>
-			      <Col xs={6} md={4} className="errorlbl">
+			      <Col xs={6} md={2} className="errorlbl">
 			      	<p className={this.hasErrors() ? "showErr" : "noErr"}>{this.getError()}</p>
 			      </Col>
 			</Row>
