@@ -4,7 +4,7 @@
 * @Email:  rafaelbripi@gmail.com
 * @Project: myIdentity
 * @Last modified by:   Rafael Bribiesca
-* @Last modified time: 2016-09-12T22:49:30-05:00
+* @Last modified time: 2016-09-20T23:01:30-05:00
 */
 
 import React,{Component} from 'react';
@@ -24,13 +24,12 @@ class UserSignUpContainer extends Component{
       address: "",
       email: "",
       errors:{},
-      btnStyle: "btn-lg btn-block btn-success glyphicon glyphicon-plus",
-      inputShowhide: "hide"
+      ChangeIco: "btn-lg btn-block btn-success glyphicon glyphicon-plus",
     }
 
     this.handleModel = this.handleModel.bind(this);
     this.submitForm = this.submitForm.bind(this);
-    this.showHideFields = this.showHideFields.bind(this);
+    this.showBilling = this.showBilling.bind(this);
   }
 
   handleModel(data){
@@ -60,31 +59,28 @@ class UserSignUpContainer extends Component{
 			}catch(err){
 				console.log(err);
 			}
-
       console.log("sending form");
     }
   }
 
-  showHideFields() {
+  showBilling(){
     const minus = "btn-lg btn-block btn-success glyphicon glyphicon-minus";
     const plus = "btn-lg btn-block btn-success glyphicon glyphicon-plus";
 
-    if (this.state.btnStyle === plus){
-      this.setState({btnStyle: minus})
-      this.setState({inputShowhide: "show well well-sm"})
-    }
-    else if (this.state.btnStyle === minus){
-      this.setState({btnStyle: plus})
-      this.setState({inputShowhide: "hide"})
-    }
+    this.setState({ open: !this.state.open })
+    if (this.state.ChangeIco === plus)
+      this.setState({ChangeIco: minus})
+
+    else if (this.state.ChangeIco === minus)
+      this.setState({ChangeIco: plus})
   }
 
   render(){
     return(
       <UserSignUp
-        PropShow = {this.state.inputShowhide}
-        popHide = {this.state.btnStyle}
-        showHideFields={this.showHideFields}
+        showBilling = {this.showBilling}
+        open = {this.state.open}
+        ChangeIco = {this.state.ChangeIco}
         submit={this.submitForm}
         errorsFound={this.state.errors}
         handleModel={this.handleModel}/>

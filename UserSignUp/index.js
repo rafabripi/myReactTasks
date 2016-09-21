@@ -4,10 +4,10 @@
 * @Email:  rafaelbripi@gmail.com
 * @Project: myIdentity
 * @Last modified by:   Rafael Bribiesca
-* @Last modified time: 2016-09-12T22:51:15-05:00
+* @Last modified time: 2016-09-19T23:10:08-05:00
 */
 
-import {Button, Glyphicon, PageHeader, Grid, Navbar} from 'react-bootstrap';
+import {Button, Glyphicon, PageHeader, Grid, Navbar, Thumbnail, Media, Collapse, Well, FormControl, FoldingCube} from 'react-bootstrap';
 import React from 'react';
 import UserName from './UserName';
 import NickName from './NickName';
@@ -42,54 +42,67 @@ const BillingCityVal = ValidatorBase(BillingCity);
 
 const UserSignUp = (props) => {
   return(
+    <Grid>
 
-      <Grid>
+      <div className="row">
+        <div className="col-md-2"></div>
+        <div className="col-md-8">
+          <PageHeader>
+            Join Us
+            <Media.Right>
+            <img width={40} height={40} src="https://scontent.fgdl2-1.fna.fbcdn.net/v/t1.0-9/13880191_1068879963206718_4793833074759484147_n.jpg?oh=a1c26d0101f1ded495040fb490501b32&oe=5883F5AF" alt="Image"/></Media.Right>
+          </PageHeader>
+        </div>
+        <div className="col-md-2"></div>
+      </div>
+
+      <form onSubmit={props.submit}>
+        <nav className="navbar navbar-inverse navbar-fixed-top">
+          <div className="col-md-2"></div>
+          <div className="btn-group col-xs-12 col-md-8" role="group" aria-label="...">
+            <button type="submit" className="btn btn-md btn-primary glyphicon glyphicon-floppy-save navbar-btn"> Save</button>
+          </div>
+          <div className="col-md-2"></div>
+        </nav>
+
+        <EmailVal errors={props.errorsFound} onChange={props.handleModel}/>
+        <UserNameVal  errors={props.errorsFound} onChange={props.handleModel}/>
+        <NickNameVal errors={props.errorsFound} onChange={props.handleModel}/>
+        <DateBirthVal errors={props.errorsFound} onChange={props.handleModel}/>
+        <AddressVal errors={props.errorsFound} onChange={props.handleModel}/>
 
         <div className="row">
           <div className="col-md-2"></div>
-          <div className="col-md-8"><PageHeader>Join Us</PageHeader></div>
+          <div className= "col-xs-12s col-md-8">
+            <Button btn-block type="button" onClick={props.showBilling} className={props.ChangeIco} > Billing information
+            </Button>
+          </div>
           <div className="col-md-2"></div>
         </div>
 
-        <form onSubmit={props.submit}>
-          <nav className="navbar navbar-inverse navbar-fixed-top">
+        <Collapse in={props.open}>
+            <Well>
+              <BillingNameVal errors={props.errorsFound} onChange={props.handleModel}/>
+              <BillingCountryVal errors={props.errorsFound} onChange={props.handleModel}/>
+              <BillingStreetVal errors={props.errorsFound} onChange={props.handleModel}/>
+              <BillingExtNumVal errors={props.errorsFound} onChange={props.handleModel}/>
+              <BillingIntNumVal errors={props.errorsFound} onChange={props.handleModel}/>
+              <BillingZipVal errors={props.errorsFound} onChange={props.handleModel}/>
+              <BillingStateVal errors={props.errorsFound} onChange={props.handleModel}/>
+              <BillingCityVal errors={props.errorsFound} onChange={props.handleModel}/>
+            </Well>
+        </Collapse>
+        <FormControl
+            type="file"
+            placeholder="Enter text"
+          />
+      </form>
 
-              <div className="col-md-2"></div>
-              <div className="btn-group col-xs-12 col-md-8" role="group" aria-label="...">
-                <button type="submit" className="btn btn-md btn-primary glyphicon glyphicon-floppy-save navbar-btn"> Save</button>
-              </div>
-              <div className="col-md-2"></div>
+      <footer>
+        <p>&reg; 2016 myIndentity, Inc.</p>
+      </footer>
 
-          </nav>
-
-          <EmailVal errors={props.errorsFound} onChange={props.handleModel}/>
-          <UserNameVal  errors={props.errorsFound} onChange={props.handleModel}/>
-          <NickNameVal errors={props.errorsFound} onChange={props.handleModel}/>
-          <DateBirthVal errors={props.errorsFound} onChange={props.handleModel}/>
-          <AddressVal errors={props.errorsFound} onChange={props.handleModel}/>
-
-          <div className="row">
-            <div className="col-md-2"></div>
-            <div className= "col-xs-12s col-md-8">
-              <Button block id="btnShowHideBilling" type="button" onClick={props.showHideFields} className={props.popHide} > Billing information </Button>
-            </div>
-            <div className="col-md-2"></div>
-          </div>
-
-          <div id="hideBillingInfo" className={props.PropShow}>
-            <BillingNameVal errors={props.errorsFound} onChange={props.handleModel}/>
-            <BillingCountryVal errors={props.errorsFound} onChange={props.handleModel}/>
-            <BillingStreetVal errors={props.errorsFound} onChange={props.handleModel}/>
-            <BillingExtNumVal errors={props.errorsFound} onChange={props.handleModel}/>
-            <BillingIntNumVal errors={props.errorsFound} onChange={props.handleModel}/>
-            <BillingZipVal errors={props.errorsFound} onChange={props.handleModel}/>
-            <BillingStateVal errors={props.errorsFound} onChange={props.handleModel}/>
-            <BillingCityVal errors={props.errorsFound} onChange={props.handleModel}/>
-          </div>
-
-        </form>
-      </Grid>
-
+    </Grid>
   )
 }
 
