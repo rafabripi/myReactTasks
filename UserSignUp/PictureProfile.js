@@ -4,13 +4,14 @@
 * @Email:  rafaelbripi@gmail.com
 * @Project: myIdentity
 * @Last modified by:   Rafael Bribiesca
-* @Last modified time: 2016-09-29T23:02:32-05:00
+* @Last modified time: 2016-09-29T23:33:11-05:00
 */
 
 import React, { Component } from 'react';
 import ReactDom from "react-dom";
 import AvatarCropper from "react-avatar-cropper";
 import FileUpload from './FileUpload';
+import HttpFactory from "../../httpCalls/myIdentity.httpCalls";
 
 class PictureProfile extends Component {
   constructor (props) {
@@ -48,10 +49,19 @@ class PictureProfile extends Component {
     })
   }
 
-  savePictureProfile(dataURI){
+  async savePictureProfile(dataURI){
     console.log("saving... please wait");
-    console.log(dataURI);
-    
+    const superAgentClient = HttpFactory.createSuperAgentClient();
+    const dbClient = HttpFactory.create(superAgentClient);
+
+    try {
+        await dbClient.savePictureProfile(dataURI);
+    } catch (e) {
+        console.log(e);
+    } finally {
+      console.log(dataURI);
+    }
+    console.log("Saved!");
   }
 
   render() {
