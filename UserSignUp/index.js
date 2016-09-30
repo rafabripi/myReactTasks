@@ -4,11 +4,13 @@
 * @Email:  rafaelbripi@gmail.com
 * @Project: myIdentity
 * @Last modified by:   Rafael Bribiesca
-* @Last modified time: 2016-09-19T23:10:08-05:00
+* @Last modified time: 2016-09-28T22:27:06-05:00
 */
 
 import {Button, Glyphicon, PageHeader, Grid, Navbar, Thumbnail, Media, Collapse, Well, FormControl, FoldingCube} from 'react-bootstrap';
 import React from 'react';
+import PictureProfile from './PictureProfile';
+
 import UserName from './UserName';
 import NickName from './NickName';
 import Email from './Email';
@@ -47,11 +49,17 @@ const UserSignUp = (props) => {
       <div className="row">
         <div className="col-md-2"></div>
         <div className="col-md-8">
-          <PageHeader>
-            Join Us
-            <Media.Right>
-            <img width={40} height={40} src="https://scontent.fgdl2-1.fna.fbcdn.net/v/t1.0-9/13880191_1068879963206718_4793833074759484147_n.jpg?oh=a1c26d0101f1ded495040fb490501b32&oe=5883F5AF" alt="Image"/></Media.Right>
-          </PageHeader>
+
+            <Media.Body>
+            <PageHeader>
+              Join Us
+            </PageHeader>
+            </Media.Body>
+            <Media.Right align="middle">
+              <PictureProfile />
+            </Media.Right>
+
+
         </div>
         <div className="col-md-2"></div>
       </div>
@@ -92,10 +100,6 @@ const UserSignUp = (props) => {
               <BillingCityVal errors={props.errorsFound} onChange={props.handleModel}/>
             </Well>
         </Collapse>
-        <FormControl
-            type="file"
-            placeholder="Enter text"
-          />
       </form>
 
       <footer>

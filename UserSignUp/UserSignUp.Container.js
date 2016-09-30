@@ -4,7 +4,7 @@
 * @Email:  rafaelbripi@gmail.com
 * @Project: myIdentity
 * @Last modified by:   Rafael Bribiesca
-* @Last modified time: 2016-09-20T23:01:30-05:00
+* @Last modified time: 2016-09-28T22:18:12-05:00
 */
 
 import React,{Component} from 'react';
@@ -13,6 +13,7 @@ import nestedProperty from 'nested-property';
 import constraints from '../../constraints/userSignUp.constraints';
 import _validate from 'validate.js';
 import HttpFactory from "../../httpCalls/myIdentity.httpCalls";
+
 
 class UserSignUpContainer extends Component{
   constructor(props){
@@ -44,7 +45,12 @@ class UserSignUpContainer extends Component{
 
   async submitForm(event){
     event.preventDefault();
-    const dataNoValid = _validate(this.state, constraints)
+
+    let tempConstraints = JSON.parse(JSON.stringify(constraints))
+    if(!this.state.open)
+      delete tempConstraints.billingName
+
+    const dataNoValid = _validate(this.state, tempConstraints)
 
     if (dataNoValid)
       this.setState({errors: dataNoValid})
