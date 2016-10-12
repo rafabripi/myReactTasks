@@ -4,7 +4,7 @@
 * @Email:  rafaelbripi@gmail.com
 * @Project: myIdentity
 * @Last modified by:   Rafael Bribiesca
-* @Last modified time: 2016-09-28T22:18:12-05:00
+* @Last modified time: 2016-10-11T23:02:17-05:00
 */
 
 import React,{Component} from 'react';
@@ -26,11 +26,13 @@ class UserSignUpContainer extends Component{
       email: "",
       errors:{},
       ChangeIco: "btn-lg btn-block btn-success glyphicon glyphicon-plus",
+      btnTitleNetSocial: "Social Network"
     }
 
     this.handleModel = this.handleModel.bind(this);
     this.submitForm = this.submitForm.bind(this);
     this.showBilling = this.showBilling.bind(this);
+    this.NetSocial = this.NetSocial.bind(this);
   }
 
   handleModel(data){
@@ -81,6 +83,12 @@ class UserSignUpContainer extends Component{
       this.setState({ChangeIco: plus})
   }
 
+  NetSocial(){
+    this.setState(
+      {btnTitleNetSocial: "Facebook"}
+    );
+  }
+
   render(){
     return(
       <UserSignUp
@@ -89,7 +97,10 @@ class UserSignUpContainer extends Component{
         ChangeIco = {this.state.ChangeIco}
         submit={this.submitForm}
         errorsFound={this.state.errors}
-        handleModel={this.handleModel}/>
+        handleModel={this.handleModel}
+        NetSocial={this.NetSocial}
+        btnTitleNetSocial={this.state.btnTitleNetSocial}
+      />
     )
   }
 }

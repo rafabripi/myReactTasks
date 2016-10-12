@@ -4,11 +4,12 @@
 * @Email:  rafaelbripi@gmail.com
 * @Project: myIdentity
 * @Last modified by:   Rafael Bribiesca
-* @Last modified time: 2016-09-28T22:27:06-05:00
+* @Last modified time: 2016-10-11T23:03:10-05:00
 */
 
-import {Button, Glyphicon, PageHeader, Grid, Navbar, Thumbnail, Media, Collapse, Well, FormControl, FoldingCube} from 'react-bootstrap';
+import {Button, Glyphicon, PageHeader, Grid, Navbar, Thumbnail, Media, Collapse, Well, FormControl, DropdownButton, MenuItem} from 'react-bootstrap';
 import React from 'react';
+
 import PictureProfile from './PictureProfile';
 
 import UserName from './UserName';
@@ -45,21 +46,17 @@ const BillingCityVal = ValidatorBase(BillingCity);
 const UserSignUp = (props) => {
   return(
     <Grid>
-
       <div className="row">
         <div className="col-md-2"></div>
         <div className="col-md-8">
-
             <Media.Body>
-            <PageHeader>
-              Join Us
-            </PageHeader>
+              <PageHeader>
+                Join Us
+              </PageHeader>
             </Media.Body>
             <Media.Right align="middle">
               <PictureProfile />
             </Media.Right>
-
-
         </div>
         <div className="col-md-2"></div>
       </div>
@@ -78,6 +75,40 @@ const UserSignUp = (props) => {
         <NickNameVal errors={props.errorsFound} onChange={props.handleModel}/>
         <DateBirthVal errors={props.errorsFound} onChange={props.handleModel}/>
         <AddressVal errors={props.errorsFound} onChange={props.handleModel}/>
+
+        <div className="row">
+        <div className="col-lg-2"></div>
+        <div className="col-lg-8"><hr /></div>
+        <div className="col-lg-2"></div>
+        </div>
+
+        <div className="row">
+          <div className="col-lg-2"></div>
+          <div className="col-lg-8">
+            <div className="input-group">
+              <span className="input-group-btn">
+                <DropdownButton bsStyle="success" id="1" title={props.btnTitleNetSocial}>
+                  <MenuItem eventKey="1" onClick={props.NetSocial}>Facebook</MenuItem>
+                  <MenuItem eventKey="2">Twitter</MenuItem>
+                  <MenuItem eventKey="3">Instagram</MenuItem>
+                  <MenuItem eventKey="4">G++</MenuItem>
+                  <MenuItem eventKey="5">LinkedIn</MenuItem>
+                </DropdownButton>
+              </span>
+              <input type="text" className="form-control" placeholder="URL..." />
+              <span className="input-group-btn">
+                <button className="btn btn-primary" type="button">Add!</button>
+              </span>
+            </div>
+          </div>
+          <div className="col-lg-2"></div>
+        </div>
+
+        <div className="row">
+        <div className="col-lg-2"></div>
+        <div className="col-lg-8"><hr /></div>
+        <div className="col-lg-2"></div>
+        </div>
 
         <div className="row">
           <div className="col-md-2"></div>
@@ -105,11 +136,9 @@ const UserSignUp = (props) => {
       <footer>
         <p>&reg; 2016 myIndentity, Inc.</p>
       </footer>
-
     </Grid>
   )
 }
-
 
 export default UserSignUp;
 module.exports.UserSignUp = UserName;

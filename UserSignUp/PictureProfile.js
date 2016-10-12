@@ -4,14 +4,15 @@
 * @Email:  rafaelbripi@gmail.com
 * @Project: myIdentity
 * @Last modified by:   Rafael Bribiesca
-* @Last modified time: 2016-09-29T23:33:11-05:00
+* @Last modified time: 2016-10-09T22:35:33-05:00
 */
-
+import {Image} from 'react-bootstrap';
 import React, { Component } from 'react';
 import ReactDom from "react-dom";
 import AvatarCropper from "react-avatar-cropper";
 import FileUpload from './FileUpload';
 import HttpFactory from "../../httpCalls/myIdentity.httpCalls";
+import "./pictureProfile.css";
 
 class PictureProfile extends Component {
   constructor (props) {
@@ -24,6 +25,7 @@ class PictureProfile extends Component {
     this.handleRequestHide = this.handleRequestHide.bind(this);
     this.handleFileChange = this.handleFileChange.bind(this);
     this.handleCrop = this.handleCrop.bind(this);
+    this.savePictureProfile = this.savePictureProfile.bind(this);
   }
 
   handleRequestHide(){
@@ -32,13 +34,20 @@ class PictureProfile extends Component {
     });
   }
 
-  handleCrop(dataURI){
-    this.savePictureProfile(dataURI)
-    this.setState({
-      cropperOpen: false,
-      img: null,
-      croppedImg: dataURI
-    });
+  async handleCrop(dataURI){
+     await this.savePictureProfile(dataURI)
+    if (this.state.error === "hasError"){
+      this.setState({
+        cropperOpen: false,
+      });
+    }
+    else {
+      this.setState({
+        cropperOpen: false,
+        img: null,
+        croppedImg: dataURI
+      });
+    }
   }
 
   handleFileChange (dataURI) {
@@ -50,18 +59,21 @@ class PictureProfile extends Component {
   }
 
   async savePictureProfile(dataURI){
-    console.log("saving... please wait");
     const superAgentClient = HttpFactory.createSuperAgentClient();
     const dbClient = HttpFactory.create(superAgentClient);
 
     try {
-        await dbClient.savePictureProfile(dataURI);
+      await dbClient.savePictureProfile(dataURI);
+      console.log("Saved!");
     } catch (e) {
-        console.log(e);
+      console.log(e);
+       alert("Oh! Sorry something it's going wrong, please retry later");
+       this.setState({
+         error: "hasError"
+       });
     } finally {
-      console.log(dataURI);
+      //console.log(dataURI);
     }
-    console.log("Saved!");
   }
 
   render() {
@@ -70,10 +82,11 @@ class PictureProfile extends Component {
           <div className="avatar-photo">
             <FileUpload handleFileChange={this.handleFileChange} />
             <div className="avatar-edit">
-              <span>Click to Pick Avatar</span>
-              <i className="fa fa-camera"></i>
+              <p className="glyphicon glyphicon-camera"></p>
+              <span className="glyphicon">Select profile picture</span>
+              <i className="glyphicon"></i>
              </div>
-            <img src={this.state.croppedImg} />
+            <Image src={this.state.croppedImg} responsive/>
           </div>
 
           {this.state.cropperOpen &&
