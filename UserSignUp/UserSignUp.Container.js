@@ -4,7 +4,7 @@
 * @Email:  rafaelbripi@gmail.com
 * @Project: myIdentity
 * @Last modified by:   Rafael Bribiesca
-* @Last modified time: 2016-10-11T23:02:17-05:00
+* @Last modified time: 2016-10-13T22:34:37-05:00
 */
 
 import React,{Component} from 'react';
@@ -19,11 +19,6 @@ class UserSignUpContainer extends Component{
   constructor(props){
     super(props);
     this.state = {
-      userName : "",
-      nickName: "",
-      dateBirth: "",
-      address: "",
-      email: "",
       errors:{},
       ChangeIco: "btn-lg btn-block btn-success glyphicon glyphicon-plus",
       btnTitleNetSocial: "Social Network"
@@ -33,6 +28,8 @@ class UserSignUpContainer extends Component{
     this.submitForm = this.submitForm.bind(this);
     this.showBilling = this.showBilling.bind(this);
     this.NetSocial = this.NetSocial.bind(this);
+    this.getNetSocialURL = this.getNetSocialURL.bind(this);
+    this.addNetSocial = this.addNetSocial.bind(this);
   }
 
   handleModel(data){
@@ -83,10 +80,25 @@ class UserSignUpContainer extends Component{
       this.setState({ChangeIco: plus})
   }
 
-  NetSocial(){
+  NetSocial(event, eventKey){
     this.setState(
-      {btnTitleNetSocial: "Facebook"}
+      {btnTitleNetSocial: event}
     );
+  }
+
+  getNetSocialURL(event){
+   this.setState({netSocialURL: event.target.value})
+  }
+
+  addNetSocial(){
+    let res = "this.state.openSocial".concat(this.state.btnTitleNetSocial);
+    console.log(res);
+
+    this.setState({
+      openSocialFacebook : !this.state.openSocialFacebook
+    })
+
+
   }
 
   render(){
@@ -100,6 +112,9 @@ class UserSignUpContainer extends Component{
         handleModel={this.handleModel}
         NetSocial={this.NetSocial}
         btnTitleNetSocial={this.state.btnTitleNetSocial}
+        getNetSocialURL={this.getNetSocialURL}
+        addNetSocial={this.addNetSocial}
+        openSocialFacebook = {this.state.openSocialFacebook}
       />
     )
   }

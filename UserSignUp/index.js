@@ -4,7 +4,7 @@
 * @Email:  rafaelbripi@gmail.com
 * @Project: myIdentity
 * @Last modified by:   Rafael Bribiesca
-* @Last modified time: 2016-10-11T23:03:10-05:00
+* @Last modified time: 2016-10-13T20:56:15-05:00
 */
 
 import {Button, Glyphicon, PageHeader, Grid, Navbar, Thumbnail, Media, Collapse, Well, FormControl, DropdownButton, MenuItem} from 'react-bootstrap';
@@ -26,6 +26,8 @@ import BillingIntNum from './BillingIntNum';
 import BillingZip from './BillingZip';
 import BillingState from './BillingState';
 import BillingCity from './BillingCity'
+
+import SocialFacebook from './SocialFacebook';
 import ValidatorBase from "../Validator";
 
 const UserNameVal = ValidatorBase(UserName);
@@ -42,6 +44,8 @@ const BillingIntNumVal = ValidatorBase(BillingIntNum);
 const BillingZipVal = ValidatorBase(BillingZip);
 const BillingStateVal = ValidatorBase(BillingState);
 const BillingCityVal = ValidatorBase(BillingCity);
+
+const SocialFacebookVal = ValidatorBase(SocialFacebook);
 
 const UserSignUp = (props) => {
   return(
@@ -76,6 +80,11 @@ const UserSignUp = (props) => {
         <DateBirthVal errors={props.errorsFound} onChange={props.handleModel}/>
         <AddressVal errors={props.errorsFound} onChange={props.handleModel}/>
 
+        <SocialFacebookVal errors={props.errorsFound} onChange={props.handleModel}/>
+        <Collapse in={props.openSocialFacebook}>
+          <div>Hello</div>
+        </Collapse>
+
         <div className="row">
         <div className="col-lg-2"></div>
         <div className="col-lg-8"><hr /></div>
@@ -88,16 +97,16 @@ const UserSignUp = (props) => {
             <div className="input-group">
               <span className="input-group-btn">
                 <DropdownButton bsStyle="success" id="1" title={props.btnTitleNetSocial}>
-                  <MenuItem eventKey="1" onClick={props.NetSocial}>Facebook</MenuItem>
-                  <MenuItem eventKey="2">Twitter</MenuItem>
-                  <MenuItem eventKey="3">Instagram</MenuItem>
-                  <MenuItem eventKey="4">G++</MenuItem>
-                  <MenuItem eventKey="5">LinkedIn</MenuItem>
+                  <MenuItem eventKey="Facebook" onSelect={props.NetSocial}>Facebook</MenuItem>
+                  <MenuItem eventKey="Twitter" onSelect={props.NetSocial}>Twitter</MenuItem>
+                  <MenuItem eventKey="Instagram" onSelect={props.NetSocial}>Instagram</MenuItem>
+                  <MenuItem eventKey="G++" onSelect={props.NetSocial}>G++</MenuItem>
+                  <MenuItem eventKey="LinkedIn" onSelect={props.NetSocial}>LinkedIn</MenuItem>
                 </DropdownButton>
               </span>
-              <input type="text" className="form-control" placeholder="URL..." />
+              <input type="text" onChange={props.getNetSocialURL} className="form-control" placeholder="URL..." />
               <span className="input-group-btn">
-                <button className="btn btn-primary" type="button">Add!</button>
+                <button className="btn btn-primary" type="button" onClick={props.addNetSocial} >Add!</button>
               </span>
             </div>
           </div>
