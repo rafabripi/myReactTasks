@@ -4,7 +4,7 @@
 * @Email:  rafaelbripi@gmail.com
 * @Project: myIdentity
 * @Last modified by:   Rafael Bribiesca
-* @Last modified time: 2016-10-13T22:34:37-05:00
+* @Last modified time: 2016-10-16T22:44:11-05:00
 */
 
 import React,{Component} from 'react';
@@ -91,12 +91,12 @@ class UserSignUpContainer extends Component{
   }
 
   addNetSocial(){
-    let res = "this.state.openSocial".concat(this.state.btnTitleNetSocial);
-    console.log(res);
 
-    this.setState({
-      openSocialFacebook : !this.state.openSocialFacebook
-    })
+    if (this.state.btnTitleNetSocial === "Facebook"){
+      this.setState({
+        openSocialFacebook : !this.state.openSocialFacebook
+      })
+    }
 
 
   }

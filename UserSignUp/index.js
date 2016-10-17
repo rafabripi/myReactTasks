@@ -4,7 +4,7 @@
 * @Email:  rafaelbripi@gmail.com
 * @Project: myIdentity
 * @Last modified by:   Rafael Bribiesca
-* @Last modified time: 2016-10-13T20:56:15-05:00
+* @Last modified time: 2016-10-16T22:49:48-05:00
 */
 
 import {Button, Glyphicon, PageHeader, Grid, Navbar, Thumbnail, Media, Collapse, Well, FormControl, DropdownButton, MenuItem} from 'react-bootstrap';
@@ -80,9 +80,11 @@ const UserSignUp = (props) => {
         <DateBirthVal errors={props.errorsFound} onChange={props.handleModel}/>
         <AddressVal errors={props.errorsFound} onChange={props.handleModel}/>
 
-        <SocialFacebookVal errors={props.errorsFound} onChange={props.handleModel}/>
+
         <Collapse in={props.openSocialFacebook}>
-          <div>Hello</div>
+          <div>
+            <SocialFacebookVal errors={props.errorsFound} onChange={props.handleModel}/>
+          </div>
         </Collapse>
 
         <div className="row">
